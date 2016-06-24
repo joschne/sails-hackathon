@@ -1,5 +1,5 @@
 # Getting Started
-Install node, npm and sails like described here: [![Sails Get Started](http://sailsjs.org/get-started)]
+Install node, npm and sails like described here: [Sails Get Started](http://sailsjs.org/get-started)
 
 ```sh
 #change in the app root
