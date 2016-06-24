@@ -16,7 +16,7 @@ sails lift
 ##Database Connection
 A database server is needed. Configure the connection to the database in `config/connections.js` and `config/env/development.js`.
 
-In order to access a postgres database the sails-postgres connector is needed:
+In order to access a postgres database the sails-postgres connector is needed. Within the app root do:
 
 ```sh
 #install sails-postgresql
