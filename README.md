@@ -6,19 +6,21 @@ Install node, npm and sails like described here: [Sails Get Started](http://sail
 cd sails-hackathon
 ```
 
-The connection to the database is configured in 'config/connections.js'
-
-In order to access the postgres database the sails-postgres connector is needed:
-
-```sh
-#install sails-postgresql
-npm install sails-postgresql                                        
-```
-
-
 To lift the server/app:
 
 ```sh
 #lift the server
 sails lift
 ```
+
+##Database Connection
+A database server is needed. Configure the connection to the database in `config/connections.js` and `config/env/development.js`.
+
+In order to access a postgres database the sails-postgres connector is needed:
+
+```sh
+#install sails-postgresql
+npm install sails-postgresql                                        
+```
+
+Lift the app again.
