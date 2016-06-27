@@ -3,6 +3,7 @@
   <h2>Idea</h2>
   <p>
     This is a simple example <a href="http://sailsjs.org/">sails</a> application, that we can use for the hackathon.
+    <br>The source code is on GitHub: <a target="_blank" href="https://github.com/joschne/sails-hackathon">Source Code</a>
     <br>It is a MVC quite simple to understand and it does some things that can be usefull for us at the hackathon.
   </p>
   <p>
@@ -10,24 +11,14 @@
   <h2>Database Connection</h2>
   <p>
     It connects to a postgres database configured in <code>config/env/development.js</code> and <code>config/connections.js</code> <br>
-    <code>config/connections.js</code>:
-    <pre>
-      PostgresqlServer: {
-        adapter: 'sails-postgresql',
-        host: 'localhost',
-        port: 5433,
-        user: 'postgres',
-        password: 'postgres',
-        database: 'hackathon'
-      }
-    </pre>
 
-
-    If we manage to host a postgres DB <a href="http://sailsjs.org/documentation/reference/configuration/sails-config-connections" title="see example">remotely</a> , we can work on the same data/database in different ways:
+    Since we use this <a href="https://github.com/joschne/sails-hackathon/blob/master/config/connections.js" title="see example">postgres DB remotely</a>, we can work on the same data/database in different ways:
     <ul>
       <li>With Clients (the CLI of psql or the GUI PgAdmin III) we can fill the Database, manipulate data and develop custom quieries.</li>
       <li>With this sails app in order to make a GUI in HTML5/JavaScript.</li>
     </ul>
+    Attention: This approach is only good for development and testing with opendata. The Postgres DB can be accessed by anyone, the password is published.
+
     <h2>Everything to make a API and a GUI</h2>
     <h3>Model</h3>
     In sails, the programmatic access to the database is defined in the model here <code>api/models</code>. The Model maps a DB-Table.
@@ -71,15 +62,22 @@
   <ul class="list-group">
     <li class="list-group-item">
       <a href="/admin">admin</a> <br>
-      The link points to a route in <code>config/routes.js</code> that points to the view <code>admin.ejs</code>. The admin.ejs includes a <a href="http://ng-admin-book.marmelab.com/">ng-admin interface</a> that uses the Blueprint API of the model Article.
+      We can use this page to quickly generate some GUI for DB-Access.
+      <br>
+      The <a href="http://ng-admin-book.marmelab.com/">ng-admin interface</a> is a Angular Based Library
+      to make HTML5 GUI for filtering, searching and the CRUD Operations on the DB.
+      Here it is included in <code>admin.ejs</code> which is called by a route in <code>config/routes.js</code>.
     </li>
     <li class="list-group-item">
       <a href="/foo">foo</a> <br>
-      The link points to a route in <code>config/routes.js</code> that points to the view <code>foo.ejs</code>. The foo.ejs includes a angular directive called "bar".
+       We can use this page for quickly generate anything, for example data visualization. <br>
+      This Page includes a angular directive called "bar" whick uses the REST Api of the sails app.
+      The pages view is defined in <code>foo.ejs</code> which is called by a route in <code>config/routes.js</code>.
     </li>
     <li class="list-group-item">
       <a href="/article/customquery">Custom Api with custom SQL-Query</a> <br>
       This Link points to a custom Api named "customquery" defined in <code>api/controllers/ArticleController.js</code>
+
     </li>
   </ul>
 </div>
