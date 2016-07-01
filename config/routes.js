@@ -40,6 +40,9 @@ module.exports.routes = {
   },
   '/': {
     view: 'home'
+  },
+  '/articletext': {
+    view: 'articletext'
   }
 
 

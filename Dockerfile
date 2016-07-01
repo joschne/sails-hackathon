@@ -6,7 +6,7 @@ MAINTAINER Jonas Schneider <jonas.schneider@balcab.ch>
 RUN mkdir /app
 
 # install Sails
-RUN npm install -g sails@0.12.0
+RUN npm install -g sails@0.12.1
 RUN npm install grunt
 
 # Copy the app in the folder

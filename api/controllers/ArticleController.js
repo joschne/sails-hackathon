@@ -17,5 +17,17 @@ module.exports = {
 		 if (err) return res.serverError(err);
 		 return res.ok(results.rows);
 	 });
- }
+ },
+ text: function (req, res) {
+	 // ...
+	 Article.query('SELECT article.xml FROM article where article.id = 3', function(err, results) {
+		if (err) return res.serverError(err);
+		// return res.ok(results.rows);
+		return res.view('articletext', {
+			xml: results.rows[0].xml,
+			test: 'jo'
+		});
+	});
+
+ },
 };
