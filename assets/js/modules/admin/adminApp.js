@@ -27,12 +27,12 @@ myApp.config(['NgAdminConfigurationProvider', function(NgAdminConfigurationProvi
   article.listView()
   .fields([
     nga.field('id'),
-    nga.field('text'),
+    nga.field('xml'),
     nga.field('title'),
     nga.field('category')
   ])
   .filters([
-    nga.field('text.contains', 'template')
+    nga.field('xml', 'template')
     .label('')
     .pinned(true)
     .template('<div class="input-group"><input type="text" ng-model="value" placeholder="Search Text" class="form-control"></input><span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span></div>'),
@@ -41,10 +41,10 @@ myApp.config(['NgAdminConfigurationProvider', function(NgAdminConfigurationProvi
 
   ])
   // .perPage(5)
-  .listActions(['edit', 'delete']);
+  .listActions(['<a href="article/text/{{entry.values.id}}" class="btn btn-xs btn-default"><i class="fa fa-external-link"></i> details</a>']);
 
   article.creationView().fields([
-    nga.field('text').validation({required:true}),
+    nga.field('xml').validation({required:true}),
     nga.field('title'),
     nga.field('category')
   ]);

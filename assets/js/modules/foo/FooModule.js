@@ -1,1 +1,1 @@
-angular.module('FooModule', []);
+angular.module('FooModule', ['ui.bootstrap']);
