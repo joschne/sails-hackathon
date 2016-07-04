@@ -1,40 +1,52 @@
 <span>
+  <!-- <span ng-if="!hdsUrl && !hdsUnoderedUrls && !wikipediaUrl && !dbpediaUrl">
+    <a uib-popover-template="'help.html'" popover-title='Help to identify!' popover-trigger="outsideClick" style="cursor:pointer" class="text-danger">
+      {{label}}
+    </span>
 
 
-<a uib-popover-template="'popover.html'" popover-title='More about "{{label}}"' popover-trigger="outsideClick" style="cursor:pointer">
+    <script type="text/ng-template" id="help.html">
+      "{{label}}" has been recognized as an entity.
+      <button class="btn btn-primary">Identify</button>
+    </script>
+  </span> -->
+  <span ng-if="hdsUrl || hdsUnoderedUrls || wikipediaUrl || dbpediaUrl">
+    <a uib-popover-template="'popover.html'" popover-title='More about "{{label}}"' popover-trigger="outsideClick" style="cursor:pointer">
+    {{label}}
+  </a>
+
+  <script type="text/ng-template" id="popover.html">
+    <!-- Links to Historical Dictionary of Switzerland -->
+    <div ng-if="hdsUrl">
+      <!-- <strong>Historical Dictionary of Switzerland</strong> -->
+      <a href="{{hdsUrl}}" target="_blank">Historical Dictionary of Switzerland <i class="fa fa-external-link"></i></a>
+    </div>
+
+    <div ng-if="hdsUnoderedUrls">
+      <!-- <strong>Historical Dictionary of Switzerland</strong> -->
+      <p>
+        Our algorithms found several options. There may be wrong links:
+      </p>
+      <a ng-repeat="url in hdsUnoderedUrls" href="{{url}}" target="_blank">Historical Dictionary of Switzerland {{$index}} <i class="fa fa-external-link"></i></a>
+    </div>
+
+    <!-- Links to Wikipedia -->
+    <div ng-if="wikipediaUrl">
+      <!-- <strong>Wikipedia</strong> -->
+      <a href="{{wikipediaUrl}}" target="_blank">Wikipedia <i class="fa fa-external-link"></i></a>
+    </div>
+
+    <!-- Links to DBPedia -->
+    <div ng-if="dbpediaUrl">
+      <!-- <strong>dbpedia</strong> -->
+      <a href="{{dbpediasUrl}}" target="_blank">dbpedia <i class="fa fa-external-link"></i></a>
+    </div>
+
+  </script>
+</span>
+<span ng-if="!hdsUrl && !hdsUnoderedUrls && !wikipediaUrl && !dbpediaUrl">
   {{label}}
-</a>
+</span>
 
-<script type="text/ng-template" id="popover.html">
-  <p>
-    Those links have been automatically created:
-  </p>
-  <!-- Links to Historical Dictionary of Switzerland -->
-  <div ng-if="hdsUrl">
-    <strong>Historical Dictionary of Switzerland</strong>
-    <a href="{{hdsUrl}}" target="_blank">Historical Dictionary of Switzerland <i class="fa fa-external-link"></i></a>
-  </div>
-
-  <div ng-if="hdsUnoderedUrls">
-    <strong>Historical Dictionary of Switzerland</strong>
-    <p>
-      Our algorithms found several options. There may be wrong links:
-    </p>
-    <a ng-repeat="url in hdsUnoderedUrls" href="{{url}}" target="_blank">Historical Dictionary of Switzerland {{$index}} <i class="fa fa-external-link"></i></a>
-  </div>
-
-  <!-- Links to Wikipedia -->
-  <div ng-if="wikipediaUrl">
-    <strong>Wikipedia</strong>
-    <a href="{{wikipediaUrl}}" target="_blank">Wikipedia <i class="fa fa-external-link"></i></a>
-  </div>
-
-  <!-- Links to DBPedia -->
-  <div ng-if="dbpediaUrl">
-    <strong>dbpedia</strong>
-    <a href="{{dbpediasUrl}}" target="_blank">dbpedia <i class="fa fa-external-link"></i></a>
-  </div>
-
-</script>
 
 </span>

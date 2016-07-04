@@ -27,17 +27,23 @@ myApp.config(['NgAdminConfigurationProvider', function(NgAdminConfigurationProvi
   article.listView()
   .fields([
     nga.field('id'),
-    nga.field('xml'),
-    nga.field('title'),
-    nga.field('category')
+    nga.field('filename'),
+    nga.field('categ'),
+    nga.field('date', 'date')
   ])
   .filters([
-    nga.field('xml', 'template')
+    nga.field('filename.contains', 'template')
     .label('')
     .pinned(true)
-    .template('<div class="input-group"><input type="text" ng-model="value" placeholder="Search Text" class="form-control"></input><span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span></div>'),
+    .template('<div class="input-group"><input type="text" ng-model="value" placeholder="Search in Filename" class="form-control"></input><span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span></div>'),
     nga.field('id').label('ID'),
-    nga.field('category.contains').label('Category')
+    nga.field('text.contains', 'template')
+    .label('')
+    .pinned(true)
+    .template('<div class="input-group"><input type="text" ng-model="value" placeholder="Search in Text" class="form-control"></input><span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span></div>'),
+    nga.field('id').label('ID'),
+    nga.field('categ.contains').label('Category'),
+
 
   ])
   // .perPage(5)

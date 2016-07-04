@@ -11,6 +11,8 @@ angular.module('FooModule')
     transclude: true,
     controller: ['$scope', '$http', function($scope, $http){
 
+      
+
     }],
     templateUrl: '/templates/linkPopover.html'
   }

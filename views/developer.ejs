@@ -1,0 +1,83 @@
+
+<div class="container">
+  <h2>Idea</h2>
+  <p>
+    This is a simple example <a href="http://sailsjs.org/">sails</a> application, that we can use for the hackathon.
+    <br>The source code is on GitHub: <a target="_blank" href="https://github.com/joschne/sails-hackathon">Source Code</a>
+    <br>It is a MVC quite simple to understand and it does some things that can be usefull for us at the hackathon.
+  </p>
+  <p>
+  </p>
+  <h2>Database Connection</h2>
+  <p>
+    It connects to a postgres database configured in <code>config/env/development.js</code> and <code>config/connections.js</code> <br>
+
+    Since we use this <a href="https://github.com/joschne/sails-hackathon/blob/master/config/connections.js" title="see example">postgres DB remotely</a>, we can work on the same data/database in different ways:
+    <ul>
+      <li>With Clients (the CLI of psql or the GUI PgAdmin III) we can fill the Database, manipulate data and develop custom quieries.</li>
+      <li>With this sails app in order to make a GUI in HTML5/JavaScript.</li>
+    </ul>
+    Attention: This approach is only good for development and testing with opendata. The Postgres DB can be accessed by anyone, the password is published.
+
+    <h2>Everything to make a API and a GUI</h2>
+    <h3>Model</h3>
+    In sails, the programmatic access to the database is defined in the model here <code>api/models</code>. The Model maps a DB-Table.
+    This sample sails application expects a table "article" with those attributes defined in <code>api/models/Article.js</code>:
+    <br><br>
+    <pre>
+      module.exports = {
+        attributes: {
+          title: 'string',
+          text: 'string',
+          category: 'string'
+        }
+      };
+    </pre>
+
+  </p>
+
+  <h3>Controller (Api and Actions/Queries)</h3>
+  The controller does
+  <ul>
+    <li>
+      generate a Api for the Model/DB-Table. This API is described here <a href="http://sailsjs.org/documentation/reference/blueprint-api">Blueprint API</a> (Tipp: look at subchapters like find where to understand better).<br>
+      Behind the scenes the blueprint actions do exequte sql queries to the database and respond in json format.
+    </li>
+    <li>
+      Important for us: In addition to the blueprint actions we can create custom Api's that do for example execute our custom sql-queries to the database. Example: <code>api/controllers/ArticleController.js</code>
+    </li>
+  </ul>
+  <h3>Views</h3>
+  <p>
+    The views are defined in the <code>views</code> directory. To match a URL with a view we have to configure <code>config/routes.js</code>.
+    By default the layout.ejs wraps around other views and does embed dependencies like css and js.
+  </p>
+  <h3>Dependencies</h3>
+  <p>
+    Dependencies like js, css libraries are embedded to the view, when the are included in the corresponding sub directory of <code>assets</code>.
+    If the order of the embedded dependencies matters, we can define this here <code>tasks/pipeline.js</code>.
+  </p>
+
+  <h3>Some links to demonstrate the above</h3>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <a href="/admin">admin</a> <br>
+      We can use this page to quickly generate some GUI for DB-Access.
+      <br>
+      The <a href="http://ng-admin-book.marmelab.com/">ng-admin interface</a> is a Angular Based Library
+      to make HTML5 GUI for filtering, searching and the CRUD Operations on the DB.
+      Here it is included in <code>admin.ejs</code> which is called by a route in <code>config/routes.js</code>.
+    </li>
+    <li class="list-group-item">
+      <a href="/foo">foo</a> <br>
+       We can use this page for quickly generate anything, for example data visualization. <br>
+      This Page includes a angular directive called "bar" whick uses the REST Api of the sails app.
+      The pages view is defined in <code>foo.ejs</code> which is called by a route in <code>config/routes.js</code>.
+    </li>
+    <li class="list-group-item">
+      <a href="/article/customquery">Custom Api with custom SQL-Query</a> <br>
+      This Link points to a custom Api named "customquery" defined in <code>api/controllers/ArticleController.js</code>
+
+    </li>
+  </ul>
+</div>
